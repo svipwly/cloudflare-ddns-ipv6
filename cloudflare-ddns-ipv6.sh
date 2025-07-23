@@ -33,7 +33,7 @@ if [[ -z "$RECORD_ID" ]]; then
 fi
 
 # 获取当前主机IPv6地址（公网）
-IPV6=$(ip -6 addr | grep 'global' | grep -v 'temporary' | awk '{print $2}' | cut -d'/' -f1 | head -n 1)
+IPV6=$(ip -6 addr | grep 'global' | grep -v 'temporary' | awk '{print $2}' | cut -d'/' -f1 | grep -E '^(2|3)' | head -n 1)
 
 if [[ -z "$IPV6" ]]; then
   echo "未检测到IPv6地址"
